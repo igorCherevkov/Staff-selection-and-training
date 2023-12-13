@@ -1,0 +1,27 @@
+{% extends "companies/base.html" %}
+
+{% load static %}
+
+{% block link %}<link rel="stylesheet" href='{% static 'css/companies/initialTest.css' %}'>{% endblock %}
+
+{% block main %}
+<div class='initialTest-container'>
+    <form action="{% url 'companies:initialTest' id %}" method='post' class="companyProfile-form">
+        {% csrf_token %}
+        {% if questions %}
+            {% for question in questions %}
+                <div class='question-container'>
+                    <div class='question__h1'>{{ question.question }}</div>
+                    <div class='question__input'>
+                        <div class='question__input-h1'>Введите ваш ответ: </div>
+                        <input type='text' name="test_answer" class='question__input-input' />
+                    </div>
+                </div>
+            {% endfor %}
+            <div class='form-btn'><input class="links-btn" type="submit" value='Отправить'></div>
+        {% else %}
+        <div class='question-container'>Вопросов пока нет</div>
+        {% endif %}
+    </form>
+</div>
+{% endblock  %}

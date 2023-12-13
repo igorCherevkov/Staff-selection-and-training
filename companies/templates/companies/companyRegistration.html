@@ -1,0 +1,42 @@
+{% extends "companies/base.html" %}
+
+{% load static %}
+
+{% block link %}<link rel="stylesheet" href='{% static 'css/companies/companyRegistration.css' %}'>{% endblock %}
+
+{% block main %}
+<div class="form-container">
+    <h1 class="main-title">Заполните информацию о организации</h1>
+    <form action="{% url 'companies:companyRegistration' %}" method='post' class="createResume-form">
+        {% csrf_token %}
+        <div class="form-labels">
+            <div class='form-labels__h1'>Введите название организации</div>
+            {{ formCreate.name }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Введите название(-я) профессии(-ий) и количество свободных мест,<br>набор на которые у вас открыт</div>
+                <div class="form-labels__withnew">
+                    <div class="form-labels__container">
+                        <div class="form-label__container">
+                            <div class='form-label__h1'>Название профессии: </div>
+                            <div class='form-label'>{{ formVacancy.vacancy }}</div>
+                        </div>
+                        <div class="form-label__container">
+                            <div class='form-label__h1'>Количество свободных мест: </div>
+                            <div class='form-label'>{{ formVacancy.open_vacancies }}</div>
+                        </div>
+                        <div class="form-label__container">
+                            <div class='form-labels__h1 form-labels__h1-experience'>Опыт работы: </div>
+                            <div class='form-label'>{{ formVacancy.experience }}</div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+        </div>
+        <a class='form-labels__add'>+Добавить</a>
+        <div class='form-btn'><input class="links-btn" type="submit" value='Зарегистрировать организацию'></div>
+    </form>
+</div>
+{% endblock %}
+
+{% block javascript %}<script src="{% static 'js/companies/companyRegistration.js' %}"></script>{% endblock %}

@@ -1,0 +1,141 @@
+{% extends "companies/base.html" %}
+
+{% load static %}
+
+{% block link %}<link rel="stylesheet" href='{% static 'css/companies/companyProfile.css' %}'>{% endblock %}
+
+{% block main %}
+<div class="form-container">
+    <h1 class="main-title">Профиль компании</h1>
+    <div class='main-company__info'>
+        <div class='main-company__info-top'>
+            <div class='main-company__name'>{{ companyName }}</div>
+            <div>
+                <img src="{% if companyName.image %} {{ companyName.image.url }}{% endif %}" 
+                class='company-img' width='60px' heigth='60px'>
+            </div>
+        </div>
+        <div class='main-company__info-bottom'>
+            {% if companyName.info %}
+                <div class='main-company-info'>{{ companyName.info|linebreaksbr }}</div>
+                <a class='form-labels__add' id='form-labels__add3'>Изменить</a>
+                <div class='main-company-info-none'>
+                    <form action="{% url 'companies:companyProfile' %}" method='post' class="companyProfile-form">
+                        {% csrf_token %}
+                        <div class="form-labels">
+                            <div class='form-labels__h1'>Изменить информацию о компании</div>
+                            {{ companyInfo.info }}
+                        </div>
+                        <div class='main-company-btn__container'>
+                            <div class='main-company-btn'><input class="links-btn" type="submit" value='Изменить'></div>
+                        </div>
+                    </form>
+                </div>
+            {% else %}
+            <form action="{% url 'companies:companyProfile' %}" method='post' class="companyProfile-form">
+                {% csrf_token %}
+                <div class="form-labels">
+                    <div class='form-labels__h1'>Добавить информацию о компании</div>
+                    {{ companyInfo.info }}
+                </div>
+                <div class='main-company-btn__container'>
+                    <div class='main-company-btn'><input class="links-btn" type="submit" value='Добавить'></div>
+                </div>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+    <div class='company-profile__container'>
+        <div class='company-profile__vacancies'>
+            <h1 class='profile__vacancies-h1'>Открытые вакансии</h1>
+            {% if owner %}<div class='profile__vacancies-p'>(нажмите на название вакансии, чтобы добавить входной тест)</div>{% endif %}
+            <div class='profile__vacancies-container'>
+                {% for i in vacancies %}
+                {% if owner %}
+                    <a href="{% url 'companies:addInitialTest' i.id %}" class = 'profile__vacancies-vacancy'>{{ i.vacancy }}</a>
+                {% else %}
+                    <div class = 'profile__vacancies-vacancy'>{{ i.vacancy }}</div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% if owner %}
+            <a class='form-labels__add' id='form-labels__add1'>+Добавить</a>
+            <form action="{% url 'companies:companyProfile' %}" method='post' class="companyProfile-form">
+                {% csrf_token %}
+                <div class='none'>{{ form.name }}</div>
+                <div class="form-labels__withnew" id='form-labels__withnew1'></div>
+                <div class='form-btn'><input class="links-btn" type="submit" value='Сохранить'></div>
+            </form>
+            {% endif %}
+        </div>
+        <div class='company-profile__files'>
+            <h1 class='profile__files-h1'>Файлы компании</h1>
+            <div class='profile-files'>
+                {% for i in files_title %}
+                    <div class='profile-file__container'>
+                        <h1 class='profile-files_title'>{{ i }}</h1>
+                    {% for j in files %}
+                        {% if j.files and j.doc_title == i %}
+                            <a href='{{ j.files.url }}' class='profile-files__link'>{% if j.doc_name %}{{ j.doc_name }}{% else %}{{ j.files.url }}{% endif %}</a>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% if owner %}
+        <form action="{% url 'companies:companyProfile' %}" method='post' enctype="multipart/form-data" class="companyProfile-form">
+            {% csrf_token %}
+            <div class="form-labels">
+                <div class='form-labels__h1'>Название компании</div>
+                {{ form.name }}
+            </div>
+            <div class="form-labels">
+                <div class='form-labels__h1'>Загрузить логотип компании</div>
+                {{ companyImage.image }}
+            </div>
+            <a class='form-labels__add' id='form-labels__add2'>+Добавить файл</a>
+                {% csrf_token %}
+                    <div class="form-labels__withnew" id='form-labels__withnew2'></div>
+            <div class='form-btn'><input class="links-btn" type="submit" value='Сохранить'></div>
+        </form>
+        {% endif %}
+    </div>
+</div>
+
+<template id='form-files'>
+    <div class="form-files__container">
+        <div class="form-label__container">
+            <div class='form-label__h1'>Название секции файлов: </div>
+            <div class='form-label'>{{ form.doc_title }}</div>
+        </div>
+        <div class="form-label__container">
+            <div class='form-label__h1'>Загрузите файл: </div>
+            <div class='form-label'>{{ form.files }}</div>
+        </div>
+        <div class="form-label__container">
+            <div class='form-label__h1'>Введите название файла: </div>
+            <div class='form-label'>{{ form.doc_name }}</div>
+        </div>
+    </div>
+</template>
+
+<template id='form-vacancy'>
+    <div class="form-labels__container">
+        <div class="form-label__container">
+            <div class='form-label__h1'>Название профессии: </div>
+            <div class='form-label'>{{ formVacancy.vacancy }}</div>
+        </div>
+        <div class="form-label__container">
+            <div class='form-label__h1'>Количество свободных мест: </div>
+            <div class='form-label'>{{ formVacancy.open_vacancies }}</div>
+        </div>
+        <div class="form-label__container">
+            <div class='form-labels__h1 form-labels__h1-experience'>Опыт работы: </div>
+            <div class='form-label'>{{ formVacancy.experience }}</div>
+        </div>
+    </div>
+</template>
+{% endblock %}
+
+{% block javascript %}<script src="{% static 'js/companies/companyProfile.js' %}"></script>{% endblock %}

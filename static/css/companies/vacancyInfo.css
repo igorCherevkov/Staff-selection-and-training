@@ -1,0 +1,104 @@
+/* ----Обнуление---- */
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+u1,
+o1,
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+html,body {
+    height: 100%;
+    line-height: 1;
+    color: white;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 18px;
+}
+/* ----Обнуление---- */
+
+.vacancyInfo-container {
+    color: black;
+    margin-top: 60px;
+}
+
+.companyInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 16px 30px 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px #717272;
+    padding: 26px 18px;
+    border: 1px solid transparent;
+    transition: height 1s ease-in,padding-bottom .1s,padding-top .1s;
+}
+
+.company-name {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.company-info {
+    font-size: 16px;
+    color: #3b3b3b;
+}
+
+.companyInfo-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.vacancy-name {
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+
+.vacancy-open_vacancies {
+    font-size: 16px;
+    color: #3b3b3b;
+    margin-bottom: 12px;
+}
+
+.vacancy-btn__container {
+    margin-top: 20px;
+    width: 192px;
+    padding: 10px 20px;
+    background-color: #E78341;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}

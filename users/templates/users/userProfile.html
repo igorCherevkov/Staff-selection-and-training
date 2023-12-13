@@ -1,0 +1,42 @@
+{% extends "companies/base.html" %}
+
+{% load static %}
+
+{% block link %}<link rel="stylesheet" href='{% static 'css/users/userProfile.css' %}'>{% endblock %}
+
+{% block main %}
+<div class="form-container">
+    <form action="{% url 'users:userProfile' %}" method='post' enctype="multipart/form-data" class="userProfile-form">
+        {% csrf_token %}
+        <div class="form-labels">
+            <div class='form-labels__h1'>Имя</div>
+            {{ form.first_name }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Фамилия</div>
+            {{ form.last_name }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Профессия</div>
+            {{ form.profession }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Пол</div>
+            {{ form.gender }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Полных лет</div>
+            {{ form.age }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Город</div>
+            {{ form.town }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Фотография</div>
+            {{ form.image }}
+        </div>
+        <div class='form-btn'><input class="links-btn" type="submit" value='Сохранить'></div>
+    </form>
+</div>
+{% endblock %}

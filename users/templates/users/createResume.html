@@ -1,0 +1,43 @@
+{% extends "companies/base.html" %}
+
+{% load static %}
+
+{% block link %}<link rel="stylesheet" href='{% static 'css/users/createResume.css' %}'>{% endblock %}
+
+{% block main %}
+<div class="form-container">
+    <h1 class="main-title">Заполните информацию о себе</h1>
+    <form action="{% url 'users:createResume' %}" method='post' class="createResume-form">
+        {% csrf_token %}
+        <div class="form-labels">
+            <div class='form-labels__h1'>Введите имя</div>
+            {{ form.first_name }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Введите фамилию</div>
+            {{ form.last_name }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Введите профессию</div>
+            {{ form.profession }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Выберите пол</div>
+            {{ form.gender }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Введите количество полных лет</div>
+            {{ form.age }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Введите свой город</div>
+            {{ form.town }}
+        </div>
+        <div class="form-labels">
+            <div class='form-labels__h1'>Выберите фотографию</div>
+            {{ form.image }}
+        </div>
+        <div class='form-btn'><input class="links-btn" type="submit" value='Создать резюме'></div>
+    </form>
+</div>
+{% endblock %}

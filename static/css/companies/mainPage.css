@@ -1,0 +1,114 @@
+/* ----Обнуление---- */
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+u1,
+o1,
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+html,body {
+    height: 100%;
+    line-height: 1;
+    color: white;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 18px;
+}
+/* ----Обнуление---- */
+
+.main {
+    color: black;
+}
+
+.main-title {
+    margin-bottom: 80px;
+}
+
+.main-vacancies__container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-vacancies__title {
+    display: flex;
+    justify-content: center;
+    font-size: 22px;
+    margin-bottom: 26px;
+}
+
+.vacancy__container {
+    display: flex;
+    justify-content: space-between;
+    width: 48%;
+    margin: 0 16px 30px 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px #717272;
+    padding: 26px 18px;
+    border: 1px solid transparent;
+    transition: height 1s ease-in,padding-bottom .1s,padding-top .1s;
+}
+
+.vacancy-btn__container {
+    padding: 10px 20px;
+    background-color: #E78341;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+}
+
+.vacancy-name {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 26px;
+}
+
+.company-name {
+    font-size: 16px;
+    color: #3b3b3b;
+    margin-bottom: 14px;
+}
+
+.experience-name {
+    font-size: 16px;
+    color: #3b3b3b;
+    margin-bottom: 14px;
+}
+
+.vacancy-right {
+    display: flex;
+    justify-content: flex-start;
+}

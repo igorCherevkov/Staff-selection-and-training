@@ -1,0 +1,67 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href='{% static 'css/companies/index.css' %}'>
+    {% block link %}{% endblock  %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&family=Montserrat:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+{% comment %} <style>
+    .main-search {
+        background-image: (url('{% static 'img/workers.png'%}'));
+    }
+</style> {% endcomment %}
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="header-left">
+                <a href='{% url 'mainPage' %}' class="logo__link"><img src="{% static "img/logo.svg" %}" class='logo__img'></a>
+                <div class="logo__description">SSaT - Staff selection and training</div>
+            </div>
+            <div class="header-right">
+                {% if user.is_authenticated %}
+                <div class="header__links">
+                    <a class='profile-pic'>
+                        <img src="{% if user.image %} {{ user.image.url }} {% else %} {% static 'img/profile.webp' %} {% endif %}" 
+                        class='profile-pic-img' width='50px' heigth='50px'>
+                    </a>
+                    <div class='profile-name'>{{ user.username }}</div>
+                </div>
+                <div class="dropDown dropDown-hidden">
+                    <ul>
+                        {% if user.first_name or user.last_name or user.image or user.profession or user.age or user.gender or user.town %}
+                            <li><a href="{% url 'users:userProfile' %}" class = 'profileData_text'>Профиль</li></a>
+                        {% else %}
+                            <li><a href="{% url 'users:createResume' %}" class = 'profileData_text'>Создать резюме</a></li>
+                        {% endif %}
+                        {% if owner or staff.status == 'Пройден' %}
+                            <li><a href="{% url 'companies:companyProfile' %}" class = 'profileData_text'>Профиль организации</a></li>
+                        {% else %}
+                            <li><a href="{% url 'companies:companyRegistration' %}" class = 'profileData_text'>Зарегистрировать организацию</a></li>
+                        {% endif %}
+                        <li><a href="{% url 'users:userLogout' %}" class = 'profileData_text'>Выйти</a></li>
+                    </ul>
+                </div>
+                {% else %}
+                <div class="header__links">
+                    <a href="{% url 'users:userLogin' %}" class="header__links-link">Войти</a>
+                </div>
+                <div class="header__links">
+                    <a href="{% url 'users:userRegistration' %}" class="header__links-link">Зарегистрироваться</a>
+                </div>
+                {% endif %}
+            </div>
+        </header>
+        {% block main %}{% endblock main %}
+    </div>
+
+{% block javascript %}{% endblock %}
+<script src="{% static 'js/companies/index.js' %}"></script>
+</body>
+</html>

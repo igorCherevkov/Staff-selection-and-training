@@ -1,0 +1,39 @@
+{% extends "companies/base.html" %}
+
+{% load static %}
+
+{% block link %}<link rel="stylesheet" href='{% static 'css/companies/vacancyInfo.css' %}'>{% endblock %}
+
+{% block main %}
+<div class='vacancyInfo-container'>
+    <div class='companyInfo'>
+        <div class='companyInfo-top'>
+            <div class='company-name'>{{ companyInfo.name }}</div>
+            <div>
+                <img src="{% if companyInfo.image %} {{ companyInfo.image.url }}{% endif %}" 
+                class='company-img' width='60px' heigth='60px'>
+            </div>
+        </div>
+        <div class='companyInfo-bottom'>
+            {% if companyInfo %}<div class='company-info'>{{ companyInfo.info|linebreaksbr }}</div>{% endif %}
+        </div>
+    </div>
+    <div class='vacancyInfo'>
+        <div class='vacancy-name'>{{ vacancyInfo.vacancy }}</div>
+        <div class='vacancy-open_vacancies'>Открытых вакансий: {{ vacancyInfo.open_vacancies }}</div>
+        <div class='vacancy-info'>
+            {% if vacancyInfo.info %}
+                {{ vacancyInfo.info|linebreaksbr }}
+            {% endif %}
+        </div>
+        {% if owner.name %}
+        {% elif staff and staff.status == 'Пройден' %}
+        {% elif user.profession != vacancyInfo.vacancy and vacancyInfo.experience == 'Нужен' %}
+        {% elif staff and staff.status == 'Не пройден' %}
+            <div class='vacancy-btn__container'><a href="{% url "companies:initialTest" vacancyInfo.id %}" class = 'vacancy-btn'>Откликнуться</a></div>
+        {% else %}
+            <div class='vacancy-btn__container'><a href="{% url "companies:initialTest" vacancyInfo.id %}" class = 'vacancy-btn'>Откликнуться</a></div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

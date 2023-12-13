@@ -1,0 +1,275 @@
+/* ----Обнуление---- */
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+u1,
+o1,
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+html,body {
+    height: 100%;
+    line-height: 1;
+    color: white;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 18px;
+}
+/* ----Обнуление---- */
+.form-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 60px 0 0 0;
+}
+
+.main-company__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+    margin: 0 16px 30px 0;
+    border-radius: 4px;
+    box-shadow: 0 2px 12px #717272;
+    padding: 26px 18px;
+    border: 1px solid transparent;
+    transition: height 1s ease-in,padding-bottom .1s,padding-top .1s;
+    color: black;
+    margin-bottom: 40px;
+}
+
+.main-company-info {
+    font-size: 16px;
+    color: #3b3b3b;
+}
+
+.main-company__name {
+    margin-right: 16px;
+}
+
+.main-company__info-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.company-profile__container {
+    color: black;
+}
+
+.main-title {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.form-labels {
+    /* color: black; */
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+.form-labels:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.form-labels__h1 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.form-labels__h1-experience {
+    margin-right: 10px;
+}
+
+.form-auth_au {
+    border: 1px solid #89898a;
+    border-radius: 4px;
+    padding: 6px 18px;
+    font-size: 14px;
+}
+
+.form-auth_au:hover,
+.form-auth_au:focus {
+    border: 1px solid rgb(94, 92, 92);
+}
+
+.links-btn {
+    background-color: #E78341;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-labels {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-labels__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-label__container {
+    display: flex;
+    align-items: center;
+}
+
+.form-labels__container:not(:last-child) {
+    margin-bottom: 14px;
+}
+
+.form-label__container:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.form-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.form-labels__add {
+    color: blue;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.form-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label:not(:last-child) {
+    margin-right: 10px;
+}
+
+.form-label__h1 {
+    /* color: black; */
+    font-weight: 800;
+    margin-right: 4px;
+}
+
+.form-files__container {
+    margin-top: 14px;
+}
+
+.company-profile__container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.company-profile__vacancies {
+    display: flex;
+    flex-direction: column;
+}
+
+/* чтобы отцентрировать 3 секции, когда они все будут flex-direction: column
+@media (max-width: 376px) {
+    .company-profile__container {
+        justify-content: center;
+    }
+} */
+
+.profile__vacancies-h1 {
+    font-weight: 800;
+}
+
+.profile__vacancies-vacancy {
+    font-size: 18px;
+}
+
+.profile__vacancies-vacancy:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.profile__vacancies-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.profile__files-h1 {
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.profile-files__link {
+    color: black;
+    font-size: 14px;
+}
+
+.profile-files {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-file__container {
+    margin-bottom: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.none {
+    display: none;
+}
+
+.main-company-btn__container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.main-company-info {
+    margin-bottom: 20px;
+}
+
+.main-company-info-none {
+    display: none;
+}
+
+.main-company-info__inf {
+    display: flex;
+    margin-top: 20px;
+}
+
+.profile__vacancies-vacancy {
+    color: black;
+}

@@ -1,0 +1,35 @@
+{% extends 'users/base.html' %}
+{% load static %}
+
+{% block main %}
+    <div class="container">
+        <a href='{% url 'mainPage' %}' class="logo__link"><img src="{% static "img/logo.svg" %}" class='logo__img'></a>
+        <form action="{% url 'users:userRegistration' %}" method='post' class="logRegForm">
+            {% csrf_token %}
+            {% comment %} <h1 class='form-errors'>
+                {% if messages or form.errors %}
+                {% for message in messages %}{{ message }}{% endfor %}
+                {{ form.errors }}
+            {% endif %}
+            </h1> {% endcomment %}
+            <div class='form-top'>
+                <h1 class="form-title">Регистрация</h1>
+                {% comment %} <a href='{% url 'users:userLogin' %}' class='form-login'>Войти</a> {% endcomment %}
+                <a href='{% url 'users:userLogin' %}' class='form-login'>Войти</a>
+            </div>
+            <div class="form-labels">
+                <div class='form-labels__h1'>Имя пользователя</div>
+                {{ form.username }}
+            </div>
+            <div class="form-labels">
+                <div class='form-labels__h1'>Пароль</div>
+                {{ form.password1 }}
+            </div>
+            <div class="form-labels">
+                <div class='form-labels__h1'>Подтвердите пароль</div>
+                {{ form.password2 }}
+            </div>
+            <div class='form-btn'><input class="links-btn" type="submit" value='Зарегистрироваться'></div>
+        </form>
+    </div>
+{% endblock main %}

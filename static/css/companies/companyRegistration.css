@@ -1,0 +1,147 @@
+/* ----Обнуление---- */
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+u1,
+o1,
+li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+html,body {
+    height: 100%;
+    line-height: 1;
+    color: white;
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 18px;
+}
+/* ----Обнуление---- */
+.form-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin: 60px 0 0 0;
+}
+
+.main-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.form-labels {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+
+.form-labels:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.form-labels__h1 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 800;
+}
+
+.form-auth_au {
+    border: 1px solid #89898a;
+    border-radius: 4px;
+    padding: 6px 18px;
+    font-size: 14px;
+}
+
+.form-auth_au:hover,
+.form-auth_au:focus {
+    border: 1px solid rgb(94, 92, 92);
+}
+
+.links-btn {
+    background-color: #E78341;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.form-labels {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-labels__container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form-label__container {
+    display: flex;
+    align-items: center;
+}
+
+.form-labels__h1-experience {
+    margin-right: 20px;
+    font-weight: 800;
+}
+
+.form-labels__container:not(:last-child) {
+    margin-bottom: 14px;
+}
+
+.form-label__container:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+.form-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.form-labels__add {
+    color: blue;
+    cursor: pointer;
+}
+
+.form-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-label:not(:last-child) {
+    margin-right: 10px;
+}
+
+.form-label__h1 {
+    margin-right: 4px;
+}

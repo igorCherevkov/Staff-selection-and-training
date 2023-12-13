@@ -1,0 +1,46 @@
+{% extends "companies/base.html" %}
+{% load static %}
+
+{% block link %}<link rel="stylesheet" href='{% static 'css/companies/mainPage.css' %}'>{% endblock %}
+
+{% block main %}
+<main class='main'>
+    <h1 class='main-title'>Работа составляет большую часть жизнь каждого из нас. Случается, что приходится её менять, тем самым мы погружаемся в поиск вакансий.</h1>
+    <div class='main-vacancies'>
+        <h1 class='main-vacancies__title'>Все вакансии</h1>
+        <div class='main-vacancies__container'>
+        {% for i in vacancies %}
+            <div class='vacancy__container'>
+                <div class='vacancy-left'>
+                    <div class='vacancy-name'>{{ i.vacancy }}</div>
+                    <div class='company-name'>{{ i.name_id }}</div>
+                    <div class='experience-name'>Опыт работы: {{ i.experience }}</div>
+                    {% if owner.name %}
+                        <div class='vacancy-btn__container'><a href="{% url 'companies:vacancyInfo' i.id %}" class = 'vacancy-btn'>Посмотреть информацию</a></div>
+                    {% elif staff and staff.status == 'Пройден' %}
+                        <div class='vacancy-btn__container'><a href="{% url 'companies:vacancyInfo' i.id %}" class = 'vacancy-btn'>Посмотреть информацию</a></div>
+                    {% elif staff and staff.status == 'Не пройден' %}
+                        <div class='vacancy-btn__container'><a href="{% url 'companies:vacancyInfo' i.id %}" class = 'vacancy-btn'>Откликнуться</a></div>
+                    {% elif not user.is_active %}
+                    {% elif user.profession != i.vacancy and i.experience == 'Нужен' %}
+                        <div class='vacancy-btn__container'><a href="{% url 'companies:vacancyInfo' i.id %}" class = 'vacancy-btn'>Посмотреть информацию</a></div>
+                    {% else %}
+                        <div class='vacancy-btn__container'><a href="{% url 'companies:vacancyInfo' i.id %}" class = 'vacancy-btn'>Откликнуться</a></div>
+                    {% endif %}
+                </div>
+                <div class='vacancy-right'>
+                    {% for j in companies %}
+                        {% if i.name_id == j.name %}
+                            <div>
+                                <img src="{% if j.image %} {{ j.image.url }}{% endif %}" 
+                                class='company-img' width='60px' heigth='60px'>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock main %}              
